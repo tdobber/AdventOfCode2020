@@ -2,7 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="2015\" />
+    <None Remove="2015\Inputs\" />
+    <None Remove="2020\Days\" />
+    <None Remove="2019\Days\" />
+    <None Remove="2018\Days\" />
+    <None Remove="2015\Days\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="2015\" />
+    <Folder Include="2015\Inputs\" />
+    <Folder Include="2020\Days\" />
+    <Folder Include="2019\Days\" />
+    <Folder Include="2018\Days\" />
+    <Folder Include="2015\Days\" />
+  </ItemGroup>
 </Project>

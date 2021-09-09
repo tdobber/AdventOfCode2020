@@ -1,7 +1,5 @@
-﻿using AdventOfCode._2018;
-using AdventOfCode._2019;
-using AdventOfCode._2020;
-using System;
+﻿using System;
+using System.Reflection;
 
 namespace AdventOfCode
 {
@@ -17,20 +15,40 @@ namespace AdventOfCode
 
             switch (yearToRun)
             {
+                case 15:
+                case 2015:
+                    yearToRun = 2015;
+                    break;
+
                 case 18:
                 case 2018:
-                    Year2018.StartDay(dayToRun);
+                    yearToRun = 2018;
                     break;
 
                 case 19:
                 case 2019:
-                    Year2019.StartDay(dayToRun);
+                    yearToRun = 2019;
                     break;
 
                 default:
-                    Year2020.StartDay(dayToRun);
-                        break;
+                    yearToRun = 2020;
+                    break;
             }
+
+            Type specificDay = Type.GetType($"AdventOfCode._{yearToRun}.Day{dayToRun}");
+
+            if (specificDay != null)
+            {
+                MethodInfo methodToInvoke = specificDay.GetMethod("Start");
+                methodToInvoke.Invoke(null, null);
+            }
+            else
+            {
+                Console.WriteLine($"Day {dayToRun} of year {yearToRun} does not (yet) exist.");
+            }
+
+            Console.WriteLine("----End of program, terminate by pressing a key----");
+            Console.Read();
         }
     }
 }
